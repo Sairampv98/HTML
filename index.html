@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive HTML Learner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Interactive HTML Learner</h1>
+
+    <!-- Tabs for guided learning and free practice -->
+    <div class="tabs">
+        <button class="tab-button active" data-tab="learn">Learn (Guided)</button>
+        <button class="tab-button" data-tab="practice">Practice (Free)</button>
+    </div>
+
+    <!-- Guided Learning Path Content -->
+    <div id="learn" class="lesson-container">
+        <div class="lesson-content">
+            <h2>Guided HTML Learning Path</h2>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p>Progress: <span id="progress-text">0/15 lessons</span></p>
+            </div>
+
+            <!-- Current lesson display -->
+            <div id="current-lesson">
+                <h2>Lesson 1: Your First HTML Page</h2>
+                <div class="lesson-step">
+                    <p>Every HTML document starts with the same basic structure. Let's create one together.</p>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <p>Copy this code into the editor on the right and click "Render" to see it in action.</p>
+                </div>
+
+                <!-- Next lesson button (will be shown after completing current lesson) -->
+                <button id="next-lesson-btn" style="display: none;">Next Lesson</button>
+            </div>
+        </div>
+
+        <div class="practice-area">
+            <textarea id="html-editor" placeholder="Write your HTML here..."></textarea>
+            <button id="render-btn">Render</button>
+            <div class="preview-container">
+                <!-- Overlay div to capture mouse events -->
+                <div id="tooltip-overlay" style="position: absolute; width: 100%; height: 100%; pointer-events: none;"></div>
+                <iframe id="preview-iframe" sandbox="allow-same-origin allow-forms"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Free Practice Content (hidden by default) -->
+    <div id="practice" class="lesson-container" style="display: none;">
+        <div class="lesson-content">
+            <h2>Free HTML Practice</h2>
+            <p>Now that you've completed the guided lessons, try writing your own HTML freely!</p>
+            <p>Use the editor on the right to experiment with what you've learned.</p>
+        </div>
+
+        <div class="practice-area">
+            <textarea id="html-editor" placeholder="Write your HTML here..."></textarea>
+            <button id="render-btn">Render</button>
+            <div class="preview-container">
+                <!-- Overlay div to capture mouse events -->
+                <div id="tooltip-overlay" style="position: absolute; width: 100%; height: 100%; pointer-events: none;"></div>
+                <iframe id="preview-iframe" sandbox="allow-same-origin allow-forms"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Options and warning (shown in both modes) -->
+    <div class="options">
+        <input type="checkbox" id="allow-scripts">
+        <label for="allow-scripts">Allow JavaScript (use with caution)</label>
+        <span class="warning" id="script-warning">Warning: Enabling this may execute untrusted code.</span>
+    </div>
+
+    <!-- Challenge section (shown in guided mode) -->
+    <div class="challenge-section" style="display: none;">
+        <h3>Challenge</h3>
+        <p>Try to recreate this layout using what you've learned:</p>
+        <pre><code>&lt;div&gt;
+  &lt;h2&gt;My Awesome Page&lt;/h2&gt;
+  &lt;p&gt;This is a paragraph with some &lt;strong&gt;bold text&lt;/strong>.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;First item&lt;/li&gt;
+    &lt;li&gt;Second item&lt;/li&gt;
+    &lt;li&gt;Third item&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        <button id="check-challenge">Check My Work</button>
+        <p id="challenge-result" style="margin-top: 10px;"></p>
+    </div>
+
+    <!-- Load scripts at the end -->
+    <script src="script.js"></script>
+</body>
+</html>
+
