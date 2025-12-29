@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive HTML Learner</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Add favicon for better presentation -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/346/346079.png">
 </head>
 <body class="light-theme">
@@ -35,55 +34,27 @@
 
             <!-- Current lesson display -->
             <div id="current-lesson">
-                <h2>Lesson 1: Your First HTML Page</h2>
-                <div class="lesson-step">
-                    <p>Every HTML document starts with the same basic structure. Let's create one together.</p>
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My First Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Hello, World!&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <p>Copy this code into the editor on the right and click "Render" to see it in action.</p>
-                </div>
-
-                <!-- Next lesson button -->
-                <button id="next-lesson-btn">Next Lesson</button>
+                <!-- Content injected by JS -->
             </div>
         </div>
 
         <div class="practice-area">
+            <!-- IDs kept as original for the Learn tab -->
             <textarea id="html-editor" placeholder="Write your HTML here..."></textarea>
             <button id="render-btn">Render</button>
             <div class="preview-container">
-                <!-- Overlay div to capture mouse events -->
                 <div id="tooltip-overlay"></div>
                 <iframe id="preview-iframe" sandbox="allow-same-origin allow-forms"></iframe>
             </div>
 
-            <!-- Challenge section - initially hidden -->
-            <div class="challenge-section" style="display: none;">
-                <h3>Challenge</h3>
-                <p>Try to recreate this layout using what you've learned:</p>
-                <pre><code>&lt;div&gt;
-  &lt;h2&gt;My Awesome Page&lt;/h2&gt;
-  &lt;p&gt;This is a paragraph with some &lt;strong&gt;bold text&lt;/strong>.&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;First item&lt;/li&gt;
-    &lt;li&gt;Second item&lt;/li&gt;
-    &lt;li&gt;Third item&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
-                <button id="check-challenge">Check My Work</button>
-                <p id="challenge-result"></p>
+            <!-- Challenge section - Content now dynamic -->
+            <div class="challenge-section" id="challenge-section" style="display: none;">
+                <!-- Challenge content injected by JS -->
             </div>
         </div>
     </div>
 
-    <!-- Free Practice Content (hidden by default) -->
+    <!-- Free Practice Content -->
     <div id="practice" class="lesson-container" style="display: none;">
         <div class="lesson-content">
             <h2>Free HTML Practice</h2>
@@ -92,12 +63,12 @@
         </div>
 
         <div class="practice-area">
-            <textarea id="html-editor" placeholder="Write your HTML here..."></textarea>
-            <button id="render-btn">Render</button>
+            <!-- UNIQUE IDs for Practice Tab to fix Issue #3 -->
+            <textarea id="practice-editor" placeholder="Write your HTML here..."></textarea>
+            <button id="practice-render-btn">Render</button>
             <div class="preview-container">
-                <!-- Overlay div to capture mouse events -->
-                <div id="tooltip-overlay"></div>
-                <iframe id="preview-iframe" sandbox="allow-same-origin allow-forms"></iframe>
+                <div id="practice-tooltip-overlay"></div>
+                <iframe id="practice-preview-iframe" sandbox="allow-same-origin allow-forms"></iframe>
             </div>
         </div>
     </div>
@@ -109,16 +80,15 @@
         <span class="warning" id="script-warning">Warning: Enabling this may execute untrusted code.</span>
     </div>
 
-    <!-- Modal dialog for better alerts -->
+    <!-- Modal dialog -->
     <div id="modal-dialog" class="modal">
         <div class="modal-content">
             <h3 id="modal-title"></h3>
-            <p id="modal-message"></p>
+            <div id="modal-message"></div>
             <button id="modal-ok">OK</button>
         </div>
     </div>
 
-    <!-- Load scripts at the end -->
     <script src="script.js"></script>
 </body>
 </html>
