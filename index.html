@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive HTML Learner</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Add favicon for better presentation -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/346/346079.png">
 </head>
-<body>
+<body class="light-theme">
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+
     <h1>Interactive HTML Learner</h1>
 
     <!-- Tabs for guided learning and free practice -->
@@ -44,8 +50,8 @@
                     <p>Copy this code into the editor on the right and click "Render" to see it in action.</p>
                 </div>
 
-                <!-- Next lesson button (will be shown after completing current lesson) -->
-                <button id="next-lesson-btn" style="display: none;">Next Lesson</button>
+                <!-- Next lesson button -->
+                <button id="next-lesson-btn">Next Lesson</button>
             </div>
         </div>
 
@@ -54,13 +60,30 @@
             <button id="render-btn">Render</button>
             <div class="preview-container">
                 <!-- Overlay div to capture mouse events -->
-                <div id="tooltip-overlay" style="position: absolute; width: 100%; height: 100%; pointer-events: none;"></div>
+                <div id="tooltip-overlay"></div>
                 <iframe id="preview-iframe" sandbox="allow-same-origin allow-forms"></iframe>
+            </div>
+
+            <!-- Challenge section -->
+            <div class="challenge-section">
+                <h3>Challenge</h3>
+                <p>Try to recreate this layout using what you've learned:</p>
+                <pre><code>&lt;div&gt;
+  &lt;h2&gt;My Awesome Page&lt;/h2&gt;
+  &lt;p&gt;This is a paragraph with some &lt;strong&gt;bold text&lt;/strong>.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;First item&lt;/li&gt;
+    &lt;li&gt;Second item&lt;/li&gt;
+    &lt;li&gt;Third item&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                <button id="check-challenge">Check My Work</button>
+                <p id="challenge-result"></p>
             </div>
         </div>
     </div>
 
-    <!-- Free Practice Content (hidden by default) -->
+    <!-- Free Practice Content -->
     <div id="practice" class="lesson-container" style="display: none;">
         <div class="lesson-content">
             <h2>Free HTML Practice</h2>
@@ -73,38 +96,29 @@
             <button id="render-btn">Render</button>
             <div class="preview-container">
                 <!-- Overlay div to capture mouse events -->
-                <div id="tooltip-overlay" style="position: absolute; width: 100%; height: 100%; pointer-events: none;"></div>
+                <div id="tooltip-overlay"></div>
                 <iframe id="preview-iframe" sandbox="allow-same-origin allow-forms"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Options and warning (shown in both modes) -->
+    <!-- Options and warning -->
     <div class="options">
         <input type="checkbox" id="allow-scripts">
         <label for="allow-scripts">Allow JavaScript (use with caution)</label>
         <span class="warning" id="script-warning">Warning: Enabling this may execute untrusted code.</span>
     </div>
 
-    <!-- Challenge section (shown in guided mode) -->
-    <div class="challenge-section" style="display: none;">
-        <h3>Challenge</h3>
-        <p>Try to recreate this layout using what you've learned:</p>
-        <pre><code>&lt;div&gt;
-  &lt;h2&gt;My Awesome Page&lt;/h2&gt;
-  &lt;p&gt;This is a paragraph with some &lt;strong&gt;bold text&lt;/strong>.&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;First item&lt;/li&gt;
-    &lt;li&gt;Second item&lt;/li&gt;
-    &lt;li&gt;Third item&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
-        <button id="check-challenge">Check My Work</button>
-        <p id="challenge-result" style="margin-top: 10px;"></p>
+    <!-- Modal dialog for better alerts -->
+    <div id="modal-dialog" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <p id="modal-message"></p>
+            <button id="modal-ok">OK</button>
+        </div>
     </div>
 
     <!-- Load scripts at the end -->
     <script src="script.js"></script>
 </body>
 </html>
-
